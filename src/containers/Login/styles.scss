@@ -1,0 +1,35 @@
+@import '../../assets/scss/master';
+
+.login-container {
+  background-image: $loginBackgroundImg;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: rgba(0,0,0,.5);
+  min-width: 300px;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.login-btn {
+  width: 100%;
+}
+
+:global {
+
+  .login-form .ant-form-item-label {
+    line-height: 12px;
+  }
+
+  .login-form .ant-form-item-label > label {
+    color: white;
+    font-weight: bold;
+  }
+};
