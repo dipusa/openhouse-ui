@@ -3,8 +3,10 @@
 .container {
   background-image: $applicationBackgroundImg;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
+background-repeat: no-repeat;
+background-size: cover;
+min-height: 100%;
+padding-bottom: 20px;
 }
 
 .page-holder {
