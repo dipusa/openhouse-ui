@@ -1,0 +1,14 @@
+.cost-details {
+    padding-bottom: 10px;
+}
+
+.cost-and-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    button {
+        font-weight: bold;
+    }
+}

@@ -11,20 +11,22 @@ import axios from 'axios';
 import { createBrowserHistory } from 'history';
 import NetworkService from "./NetworkService";
 import * as serviceWorker from './serviceWorker';
-import userDetails from "./store/reducers/loginReducer"
+import userDetails from "./store/reducers/loginReducer";
+import dashboardReducer from "./store/reducers/dashboardReducer"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
 const store = createStore(
     combineReducers({
-        "userDetails": userDetails
+        "userDetails": userDetails,
+        dashboardReducer: dashboardReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
 );
 
 NetworkService.setupInterceptors(store);
-if (window.localStorage.getItem("authToken")) {
-      axios.defaults.headers.common["X-Access-Token"] = `token ${localStorage.getItem("authToken")}`;
+if (window.localStorage.getItem("accessToken")) {
+      axios.defaults.headers.common["X-Access-Token"] = `${localStorage.getItem("accessToken")}`;
 }
 ReactDOM.render(
    <BrowserRouter>

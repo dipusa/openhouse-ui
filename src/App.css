@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -12,6 +12,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+html body .app.flex-row.align-items-center {
+  height: 100vh;
+}
+
 
 .App-header {
   background-color: #282c34;

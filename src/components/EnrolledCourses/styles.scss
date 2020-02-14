@@ -1,0 +1,28 @@
+.select-status {
+    height: 30px;
+    border-radius: 4px;
+}
+
+.remarkes {
+    background: white;
+    position: absolute;
+    z-index: 1030;
+    color: black;
+    margin-top: 5px;
+    margin-left: -87px;
+    border-radius: 2px;
+    width: 300px;
+    box-shadow: 0 1px 1px 0 rgba(60,75,100,.14), 0 2px 1px -1px rgba(60,75,100,.12), 0 1px 3px 0 rgba(60,75,100,.2);
+
+    h3 {
+        display: flex;
+        padding: 5px;
+    }
+
+}
+.button-holder {
+    display: flex;
+    padding-bottom: 5px;
+    justify-content: flex-end;
+
+}

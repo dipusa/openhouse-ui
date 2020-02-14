@@ -18,33 +18,24 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '', showForgotPassword: false };
+    this.state = { email: '', password: '', showForgotPassword: false };
   }
 
   componentDidMount() {
-    const authToken = localStorage.getItem('access-token');
+    const authToken = localStorage.getItem('accessToken');
     if(authToken) {
+      this.props.history.push('/dashboard')
       const role = localStorage.getItem('user_type');
-      // if (role === 'OM_VENDOR_ADMIN') {
-      //   this.props.history.push(push('/eventsLive'));
-      // } else {
-      //   this.props.history.push('/overview')
-      // }
     }
 
   }
 
   componentDidUpdate() {
     if (this.props.authStatus === actions.LOGIN_STATUS.success) {
-      const authToken = localStorage.getItem('access-token');
+      const authToken = localStorage.getItem('accessToken');
       const role = localStorage.getItem('user_type');
       if(authToken) {
-        // if (role === 'OM_VENDOR_ADMIN') {
-        //   this.props.history.push(push('/eventsLive'));
-        // } else {
-        //   //this.props.history.push('/overview');
-        //   window.location.reload();
-        //}
+        window.location.reload();
       }
     }
   }
@@ -55,43 +46,35 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.loginHandler({
-          username: this.state.username,
+          email: this.state.email,
           password: this.state.password
         })
       }
     });
   };
 
-  submitForgotPassword = (e)=> {
-    e.preventDefault();
-    if (this.props.authStatus !== actions.LOGIN_STATUS.initiated) {
-      this.toggleForgotPassword();
-    }
-  }
 
   loginFormChange =(e) =>{
     this.setState({ [e.target.name]: e.target.value });
   }
-  toggleForgotPassword =() => {
-    const { showForgotPassword } = this.state;
-    this.setState({ showForgotPassword: !showForgotPassword });
-  }
+  
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { username, password } = this.state
+    const { email, password } = this.state
     return (
-      <div styleName="login-container">
-        <div styleName="login-form" className="login-form">
-           <Form onSubmit={this.handleSubmit} className="login-form">
-              <Form.Item label="User Name" colon={false}>
-                {getFieldDecorator('username', {
-                  rules: [{ required: true, message: 'Please input your username!' }],
+      <div className="login-container">
+        <div className="login-form">
+           <Form onSubmit={this.handleSubmit}>
+              <Form.Item label="Email ID" colon={false}>
+                {getFieldDecorator('email', {
+                  rules: [{ required: true, message: 'Please input your email!' }],
                 })(
                   <Input
                     prefix={<Icon type="user" />}
-                    placeholder="Username"
-                    value={username}
-                    name="username"
+                    placeholder="Email"
+                    type="email"
+                    value={email}
+                    name="email"
                     onChange={this.loginFormChange}
                   />,
                 )}
@@ -111,7 +94,7 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
                 )}
               </Form.Item>
               <Form.Item>
-                <Button type="primary" loading={this.props.authStatus === API_STATUS.initiated} htmlType="submit" className="login-form-button" styleName="login-btn">
+                <Button type="primary" loading={this.props.authStatus === API_STATUS.initiated} htmlType="submit" className="login-form-button login-btn">
                   Log in
                 </Button>
               </Form.Item>

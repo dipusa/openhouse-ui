@@ -1,0 +1,35 @@
+.card {
+    background-color: #ffffff;
+    padding: 10px;
+    //padding: 1.25rem;
+    background-clip: border-box;
+    //border: 1px solid #c8ced3;
+    //border-radius: 0.25rem;
+    border: 0;
+    box-shadow: 0 1px 1px 0 rgba(60,75,100,.14), 0 2px 1px -1px rgba(60,75,100,.12), 0 1px 3px 0 rgba(60,75,100,.2);
+}
+
+.card-customisation {
+    //height: 49%;
+    height: 100%;
+}
+
+.card-full-height {
+    height: 100%;
+}
+
+.offline {
+    background-color: #862044; //#A32653;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
+
+.plant-online {
+    
+
+}
+
+.plant-offline {
+    background: #FDCCCB;
+}
